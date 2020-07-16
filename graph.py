@@ -20,7 +20,7 @@ def largest(arr):
 	return max
 
 for x in range(0, columns+1):
-	y = 20 * math.sin(0.1*x) + 10
+	y = (0.001*math.pow(x, 4))+(0.001*math.pow(x, 3))+(0.01*math.pow(x, 2))+(0.01*x)+1
 
 	if(y <= rows):
 		y = int(round(y))
@@ -51,10 +51,8 @@ blank_line = ""
 for i in range(0, columns):
 	blank_line += " "
 
-curses.initscr()
-
 for l in graph:
-	sys.stdout.write(l)
+	print(l)
 	if(l != blank_line):
 		time.sleep(0.01)
 
