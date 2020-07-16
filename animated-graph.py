@@ -15,11 +15,11 @@ b_increment = 0.0008
 
 b_frames = (b_upper - b_lower) / b_increment
 
-a_sign = -1
 a_upper = 13
 a_lower = 7
 a_increment = (a_upper - a_lower) / b_frames
 
+c_increment = -1 * b_increment * 300
 
 while True:
 	x = 0
@@ -27,7 +27,7 @@ while True:
 	y_vals = []
 	string = "o"
 
-	for x in range(0, columns + 1):
+	for x in range(0, columns+1):
 		y = a * math.sin(b*x + c) + 15
 
 		if(y <= rows):
@@ -46,18 +46,13 @@ while True:
 
 		for x in range(1, len(y_vals)):
 			if y_vals[x] == y:
-				string += "o"
+				string += "+"
 			else:
 				string += " "
 
 		graph.append(string)
 		string = ""
 		decrement += 1
-
-	blank_line = ""
-
-	for i in range(0, columns):
-		blank_line += " "
 
 	for l in graph:
 		print(l)
@@ -71,7 +66,8 @@ while True:
 
 	a += b_sign * a_increment
 
-	c -= 0.1
+	c += c_increment
+
 	time.sleep(0.04)
 
 
